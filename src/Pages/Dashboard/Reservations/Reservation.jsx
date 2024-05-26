@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
-const Reservation = ({ reservation,refetch }) => {
+const Reservation = ({ reservation,refetch,search }) => {
     const axiosSecure = useAxiosSecure();
 
     const handleCancel = async(id)=>{
