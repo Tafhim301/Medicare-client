@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import PromoCode from '../../Components/PromoCode/PromoCode';
+import Swal from 'sweetalert2';
 
 
 
@@ -21,6 +22,14 @@ const TestDetails = () => {
 
 
     const handleBooking = () => {
+        if(test.slots === 0 ){
+            return Swal.fire({
+                title: "Sorry",
+                icon:"info",
+                text:"All the available slots has been booked"
+            })
+
+        }
         document.getElementById('my_modal_1').showModal()
 
 

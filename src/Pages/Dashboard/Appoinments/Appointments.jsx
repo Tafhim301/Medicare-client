@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import AppointmentTable from "./AppointmentTable";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
+
 
 
 const Appointments = () => {
     const {user} = useAuth();
     const axiosSecure =useAxiosSecure();
-    const {data: appointments = [],isPending: isLoading} = useQuery({
+    const {data: appointments = [],isPending: isLoading,refetch} = useQuery({
         queryKey: ["UpcomingAppointments"],
         queryFn: async() =>{
             const res = await axiosSecure(`/appointments/${user?.email}`);
@@ -21,7 +22,7 @@ const Appointments = () => {
             <div className="justify-center items-center flex mt-6 ">
                 <span className="loading-spinner loading loading-md"></span>
             </div>
-        :  <AppointmentTable appointments={appointments} ></AppointmentTable> }
+        :  <AppointmentTable appointments={appointments} refetch={refetch} ></AppointmentTable> }
        </div>
         
     

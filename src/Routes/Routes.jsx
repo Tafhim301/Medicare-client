@@ -18,8 +18,10 @@ import AddTest from "../Pages/Dashboard/AddTest/AddTest";
 import AllTest from "../Pages/Dashboard/AllTest/AllTest";
 import AllTests from "../Pages/AllTests/AllTests";
 import TestDetails from "../Pages/TestDetails/TestDetails";
-import Appointments from "../Pages/Appoinments/Appointments";
+
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
+import Appointments from "../Pages/Dashboard/Appoinments/Appointments";
+import Reservations from "../Pages/Dashboard/Reservations/Reservations";
 
 
   export const router = createBrowserRouter([
@@ -98,6 +100,10 @@ import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
           path: 'allTest',
           element:<AdminRoute><AllTest></AllTest></AdminRoute>
         },
+        {
+          path: 'reservations',
+          element: <AdminRoute><Reservations></Reservations></AdminRoute>
+        }
         
       ]
     }

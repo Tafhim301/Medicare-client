@@ -1,5 +1,5 @@
 import { FaAd, FaHome, FaSearch, } from "react-icons/fa";
-import { FaBook, FaCalendar, FaEnvelope, FaList, FaMoneyCheckDollar, FaUser, FaUtensils, } from "react-icons/fa6";
+import { FaBook, FaCalendar, FaEnvelope, FaList,  FaUser, FaUtensils, } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 
@@ -20,9 +20,7 @@ const Dashboard = () => {
                     {
                         isAdmin ?
                       <>
-                            <li>
-                                <NavLink to={'/dashboard/adminHome'}><FaHome />Admin Home</NavLink>
-                            </li>
+                            
                             <li>
                                 <NavLink to={'/dashboard/addTest'}><FaUtensils />Add A Test</NavLink>
                             </li>
@@ -55,12 +53,7 @@ const Dashboard = () => {
                                 <li>
                                     <NavLink to={'/dashboard/testResults'}><FaAd />Test Result</NavLink>
                                 </li>
-                                {/* <li>
-                                    <NavLink to={'/dashboard/bookings'}><FaList />My Bookings</NavLink>
-                                </li> */}
-                                <li>
-                                    <NavLink to={'/dashboard/paymentHistory'}><FaMoneyCheckDollar />Payment History</NavLink>
-                                </li>
+                               
                             </>
                     }
                     <div className="divider">
@@ -69,7 +62,7 @@ const Dashboard = () => {
                         <NavLink to={'/'}><FaHome />Home</NavLink>
                     </li>
 
-                    <li><NavLink to={'/order/salad'}> <FaSearch></FaSearch>Menu</NavLink></li>
+                    <li><NavLink to={'/allTests'}> <FaSearch></FaSearch>All Tests</NavLink></li>
                     <li><NavLink to={'/contact'}> <FaEnvelope></FaEnvelope>Contact</NavLink></li>
 
 
