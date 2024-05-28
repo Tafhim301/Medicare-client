@@ -6,7 +6,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const AppointmentTable = ({ appointments,refetch }) => {
     const axiosSecure = useAxiosSecure();
-    const handleCancel = async(_id) =>{
+    const handleCancel = async(test) =>{
         Swal.fire({
             title: "Are you sure?",
             text: "You want to cancel an appointment!",
@@ -17,7 +17,7 @@ const AppointmentTable = ({ appointments,refetch }) => {
             confirmButtonText: "Yes"
           }).then(async(result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.delete(`appointment/delete/${_id}`)
+                const res = await axiosSecure.delete(`/appointment/delete/${test._id}/${test.testId}`)
                 if(res.data.deletedCount > 0){
 
                     Swal.fire({
@@ -53,7 +53,7 @@ const AppointmentTable = ({ appointments,refetch }) => {
                                     <th>{idx + 1}</th>
                                     <td>{appointment?.test_name}</td>
                                     <td>{formatDate(appointment?.date)}</td>
-                                    <td><button onClick={() => handleCancel(appointment._id)} className="btn-sm text-white bg-red-500 btn">X</button></td>
+                                    <td><button onClick={() => handleCancel(appointment)} className="btn-sm text-white bg-red-500 btn">X</button></td>
                                 </tr>
                             ))}
                     </tbody>

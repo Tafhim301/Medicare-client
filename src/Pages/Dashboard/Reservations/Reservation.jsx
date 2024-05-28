@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
-const Reservation = ({ reservation,refetch,search }) => {
+const Reservation = ({ reservation,refetch, }) => {
     const axiosSecure = useAxiosSecure();
 
-    const handleCancel = async(id)=>{
+    const handleCancel = async(test)=>{
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -16,12 +16,12 @@ const Reservation = ({ reservation,refetch,search }) => {
             confirmButtonText: "Yes, cancel it!"
           }).then(async(result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.delete(`/appointment/delete/${id}`)
+                const res = await axiosSecure.delete(`/appointment/delete/${test._id}/${test.testId}`)
                 if(res.data.deletedCount > 0){
 
                     Swal.fire({
-                      title: "Deleted!",
-                      text: "Appointment has been cancelled .",
+                      title: "Cancelled!",
+                      text: "Appointment has been cancelled.",
                       icon: "success"
                     });
                     refetch();
@@ -56,7 +56,7 @@ const Reservation = ({ reservation,refetch,search }) => {
                             <td>{test.test_name}</td>
                             <td>{test.email}</td>
                             <td className="text-start" ><btn className="btn">Submit</btn></td>
-                            <td className="text-start" ><btn onClick={() => handleCancel(test._id)} className="btn text-white btn-error">Cancel</btn></td>
+                            <td className="text-start" ><btn onClick={() => handleCancel(test)} className="btn text-white btn-error">Cancel</btn></td>
                             
                         </tr>
                             )
