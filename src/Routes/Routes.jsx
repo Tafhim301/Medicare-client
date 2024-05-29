@@ -22,6 +22,7 @@ import TestDetails from "../Pages/TestDetails/TestDetails";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import Appointments from "../Pages/Dashboard/Appoinments/Appointments";
 import Reservations from "../Pages/Dashboard/Reservations/Reservations";
+import TestResultsForm from "../Components/TestResultForm/TestResultForm";
 
 
   export const router = createBrowserRouter([
@@ -79,6 +80,11 @@ import Reservations from "../Pages/Dashboard/Reservations/Reservations";
           path: "users",
           element: <AdminRoute><Users></Users></AdminRoute>
 
+        },
+        {
+          path: 'submitform/:id',
+          element: <AdminRoute><TestResultsForm></TestResultsForm></AdminRoute>,
+          
         },
         {
           path: 'adminHome',

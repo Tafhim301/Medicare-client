@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 
 const Reservation = ({ reservation,refetch, }) => {
@@ -51,11 +52,13 @@ const Reservation = ({ reservation,refetch, }) => {
                     <tbody>
                         {
                            reservation && reservation.map((test,idx) =>
+                          
                         <tr className="gap-5" key={idx}>
+                             
                             <th>{idx + 1}</th>
                             <td>{test.test_name}</td>
                             <td>{test.email}</td>
-                            <td className="text-start" ><btn className="btn">Submit</btn></td>
+                            <td className="text-start" ><Link to={`/dashboard/submitForm/${test._id}`}><btn  className="btn">Submit</btn></Link></td>
                             <td className="text-start" ><btn onClick={() => handleCancel(test)} className="btn text-white btn-error">Cancel</btn></td>
                             
                         </tr>

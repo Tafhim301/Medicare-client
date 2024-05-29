@@ -30,7 +30,7 @@ const Banner = () => {
             <tspan fill="yellow"> {banner.coupon_code}  </tspan> to get <tspan fill="yellow">{banner.discount_rate}% Off</tspan>
           </text>
         </svg>
-        <Link  to={'/allTests'}><button className="btn md:block hidden absolute bottom-2 border-none  bg-blue-500 text-white">See All Tests</button></Link>
+        <Link  to={'/allTests'}><button className="btn  md:flex justify-center hidden absolute bottom-2 border-none  bg-blue-500 text-white">See All Tests</button></Link>
 
       </div>
          

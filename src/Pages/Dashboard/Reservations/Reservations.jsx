@@ -20,15 +20,15 @@ const Reservations = () => {
         }
     });
 
-    // Common field to group by
+    
     const commonField = 'testId';
 
-    // Filter reservations based on the entered email
+
     const filteredReservations = reservations ? reservations.filter(reservation => {
         return reservation.email.includes(searchEmail);
     }) : [];
 
-    // Group filtered reservations
+ 
     const groupedArrays = {};
 
     filteredReservations.forEach(obj => {
@@ -39,7 +39,7 @@ const Reservations = () => {
         groupedArrays[category].push(obj);
     });
 
-    // Convert object values to an array
+   
     const newArray = Object.values(groupedArrays);
 
     return (
