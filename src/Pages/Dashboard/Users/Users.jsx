@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from 'react';
 import Swal from "sweetalert2";
+import Title from "../../../Components/Title/Title";
 
 
 
@@ -90,6 +91,7 @@ const Users = () => {
     }
     return (
         <div>
+            <Title heading={"All Users"} subHeading={"All the users are shown here"}></Title>
             {selectedUser && <dialog id="my_modal_3" className="modal">
                 <div className="modal-box">
                     <form method="dialog">
@@ -97,7 +99,7 @@ const Users = () => {
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div className=" flex h-96 flex-col">
-                        <img className="w-full h-72" src={selectedUser.avatar} alt="" />
+                        <img className="mx-3 mb-3 h-72 rounded-lg" src={selectedUser.avatar} alt="" />
                         <div className="grid h-1/2 grid-cols-2">
                             <p>Name: {selectedUser.name}</p>
                             <p>Blood Group: {selectedUser.blood_group}</p>

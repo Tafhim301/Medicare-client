@@ -32,15 +32,15 @@ const AllTests = () => {
 
     return (
         <div className="md:mx-10">
+            <div className="mt-20">
+                <Title heading={'ALL Tests'} subHeading={"Find Out What You Need"} />
+            </div>
             <form onSubmit={handleSearch}>
-                <label className="input mt-20 mr-5 input-bordered flex items-center gap-2">
+                <label className="input my-3 mr-5 input-bordered flex items-center gap-2">
                     <input name='search' type="date" className="grow" placeholder="Filter by date..." />
                     <button type="submit" className="btn btn-sm">Search By Date</button>
                 </label>
             </form>
-            <div className="-mt-14">
-                <Title heading={'ALL Tests'} subHeading={"Find Out What You Need"} />
-            </div>
             <div>
             {testLoading ? (
                     <div className="justify-center items-center flex mt-6 ">

@@ -51,7 +51,7 @@ const Dashboard = () => {
                                 </li>
                                 
                                 <li>
-                                    <NavLink to={'/dashboard/testResults'}><FaAd />Test Result</NavLink>
+                                    <NavLink to={'/dashboard/testResult'}><FaAd />Test Result</NavLink>
                                 </li>
                                
                             </>

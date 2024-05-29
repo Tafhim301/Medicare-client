@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Title from "../../../Components/Title/Title";
 
 
 const AllBanners = () => {
@@ -43,9 +44,10 @@ const AllBanners = () => {
 
     return (
         <div>
+            <Title heading={"All Banners"} subHeading={"All the banners are here"}></Title>
             <div className="overflow-x-auto">
                 <table className="table">
-                    {/* head */}
+              
                     <thead>
                         <tr>
                             <th>

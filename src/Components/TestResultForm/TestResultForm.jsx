@@ -4,16 +4,9 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Title from '../Title/Title';
-import { pdf, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 
-const styles = StyleSheet.create({
-    section: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1,
-    },
-});
+
 
 const TestResultsForm = () => {
     const axiosSecure = useAxiosSecure();
@@ -48,15 +41,12 @@ const TestResultsForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const pdfBlob = await generatePdfBlob();
-
-
-        const pdfBase64 = await convertBlobToBase64(pdfBlob);
+       
 
 
         try {
-            const res = await axiosSecure.post('/report', {
-                pdfBase64,
+            const res = await axiosSecure.post(`/report/${id}`, {
+                
                 testResults: {
                     resultData,
                     referenceRanges,
@@ -83,48 +73,11 @@ const TestResultsForm = () => {
         }
     };
 
-    // Function to generate the PDF document
-    const generatePdfBlob = () => {
-        return new Promise((resolve,) => {
-            const pdfDoc = (
-                <Document>
-                    <Page>
-                        <View style={styles.section}>
-                            <Text>Test Results</Text>
-                            <Text>WBC: {resultData.WBC}</Text>
-                            <Text>RBC: {resultData.RBC}</Text>
-                            <Text>Hemoglobin: {resultData.Hemoglobin}</Text>
-                            <Text>Hematocrit: {resultData.Hematocrit}</Text>
-                            <Text>Platelets: {resultData.Platelets}</Text>
-                            <Text>Reference Ranges</Text>
-                            <Text>WBC: {referenceRanges.WBC}</Text>
-                            <Text>RBC: {referenceRanges.RBC}</Text>
-                            <Text>Hemoglobin: {referenceRanges.Hemoglobin}</Text>
-                            <Text>Hematocrit: {referenceRanges.Hematocrit}</Text>
-                            <Text>Platelets: {referenceRanges.Platelets}</Text>
-                            <Text>Interpretation: {interpretation}</Text>
-                            <Text>Doctors Notes: {doctorsNotes}</Text>
-                        </View>
-                    </Page>
-                </Document>
-            );
 
-            const pdfBlob = pdf(pdfDoc).toBlob();
-            resolve(pdfBlob);
-        });
-    };
+   
+   
 
-
-    const convertBlobToBase64 = (blob) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                resolve(reader.result);
-            };
-            reader.onerror = reject;
-            reader.readAsDataURL(blob);
-        });
-    };
+   
 
     return (
         <div>
@@ -163,7 +116,7 @@ const TestResultsForm = () => {
                                         required
                                     />
                                 </div>
-                                {/* Repeat similar input fields for other test results */}
+
                                 <div className="form-control ">
                                     <label className="label">
                                         <span className="label-text">RBC (Red Blood Cells)</span>
@@ -192,7 +145,7 @@ const TestResultsForm = () => {
                                         required
                                     />
                                 </div>
-                              
+
                                 <div className="form-control ">
                                     <label className="label">
                                         <span className="label-text">Hemoglobin</span>
@@ -221,7 +174,7 @@ const TestResultsForm = () => {
                                         required
                                     />
                                 </div>
-                                {/* Repeat similar input fields for other test results */}
+                               
                                 <div className="form-control ">
                                     <label className="label">
                                         <span className="label-text">Hematocrit</span>
@@ -250,7 +203,7 @@ const TestResultsForm = () => {
                                         required
                                     />
                                 </div>
-                                {/* Repeat similar input fields for other test results */}
+                                
                                 <div className="form-control mt-4">
                                     <label className="label">
                                         <span className="label-text">Platelets</span>

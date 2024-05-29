@@ -23,6 +23,8 @@ import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import Appointments from "../Pages/Dashboard/Appoinments/Appointments";
 import Reservations from "../Pages/Dashboard/Reservations/Reservations";
 import TestResultsForm from "../Components/TestResultForm/TestResultForm";
+import TestResult from "../Pages/Dashboard/TestResult/TestResult";
+import TestResultDetails from "../Pages/Dashboard/TestResult/TestResultDetails";
 
 
   export const router = createBrowserRouter([
@@ -51,6 +53,9 @@ import TestResultsForm from "../Components/TestResultForm/TestResultForm";
           path: 'testDetails/:id',
           element: <PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
           
+        },
+        {
+
         }
 
       ]
@@ -74,6 +79,16 @@ import TestResultsForm from "../Components/TestResultForm/TestResultForm";
         {
           path: 'appointments',
           element: <Appointments></Appointments>
+        },
+        {
+          path: 'testResult/details/:id',
+          element: <TestResultDetails></TestResultDetails>
+
+        },
+        {
+          path: 'testResult',
+          element: <TestResult></TestResult>
+
         },
         // Admin Only Routes
         {
@@ -109,7 +124,7 @@ import TestResultsForm from "../Components/TestResultForm/TestResultForm";
         {
           path: 'reservations',
           element: <AdminRoute><Reservations></Reservations></AdminRoute>
-        }
+        },
         
       ]
     }
