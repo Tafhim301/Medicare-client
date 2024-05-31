@@ -25,6 +25,8 @@ import Reservations from "../Pages/Dashboard/Reservations/Reservations";
 import TestResultsForm from "../Components/TestResultForm/TestResultForm";
 import TestResult from "../Pages/Dashboard/TestResult/TestResult";
 import TestResultDetails from "../Pages/Dashboard/TestResult/TestResultDetails";
+import FaqBlog from "../Pages/FaqBlog/FaqBlog";
+
 
 
   export const router = createBrowserRouter([
@@ -55,6 +57,8 @@ import TestResultDetails from "../Pages/Dashboard/TestResult/TestResultDetails";
           
         },
         {
+          path: 'faq',
+          element: <FaqBlog></FaqBlog>
 
         }
 

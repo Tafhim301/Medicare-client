@@ -1,7 +1,9 @@
-import { FaAd, FaHome, FaSearch, } from "react-icons/fa";
-import { FaBook, FaCalendar, FaEnvelope, FaList,  FaUser, FaUtensils, } from "react-icons/fa6";
+import { FaAd, FaBookMedical, FaClipboardList, FaHome, FaSearch, FaUsers, } from "react-icons/fa";
+import {  FaCalendar, FaEnvelope, FaList,    } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
+import { BsCardImage } from "react-icons/bs";
+import { IoIosImages } from "react-icons/io";
 
 
 
@@ -22,22 +24,22 @@ const Dashboard = () => {
                       <>
                             
                             <li>
-                                <NavLink to={'/dashboard/addTest'}><FaUtensils />Add A Test</NavLink>
+                                <NavLink to={'/dashboard/addTest'}><FaBookMedical />Add A Test</NavLink>
                             </li>
                             <li>
                                 <NavLink to={'/dashboard/allTest'}><FaList></FaList>All Tests</NavLink>
                             </li>
                             <li>
-                                <NavLink to={'/dashboard/reservations'}><FaBook />Reservations</NavLink>
+                                <NavLink to={'/dashboard/reservations'}><FaClipboardList />Reservations</NavLink>
                             </li>
                             <li>
-                                <NavLink to={'/dashboard/users'}><FaUser />All Users</NavLink>
+                                <NavLink to={'/dashboard/users'}><FaUsers />All Users</NavLink>
                             </li>
                             <li>
-                                <NavLink to={'/dashboard/addBanner'}><FaUser />Add Banner</NavLink>
+                                <NavLink to={'/dashboard/addBanner'}><BsCardImage />Add Banner</NavLink>
                             </li>
                             <li>
-                                <NavLink to={'/dashboard/allBanners'}><FaUser />All Banners</NavLink>
+                                <NavLink to={'/dashboard/allBanners'}><IoIosImages />All Banners</NavLink>
                             </li>
                         </>
                         :

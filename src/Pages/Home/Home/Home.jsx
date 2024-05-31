@@ -1,5 +1,6 @@
-import Banner from "../Banner/Banner";
 import Footer from "../Footer/Footer";
+import Banner from "../Banner/Banner";
+
 import Recommendatons from "../Recommendations/Recommendatons";
 import FeaturedTests from "../featuredTests/FeaturedTests";
 
