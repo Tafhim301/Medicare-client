@@ -26,6 +26,9 @@ import TestResultsForm from "../Components/TestResultForm/TestResultForm";
 import TestResult from "../Pages/Dashboard/TestResult/TestResult";
 import TestResultDetails from "../Pages/Dashboard/TestResult/TestResultDetails";
 import FaqBlog from "../Pages/FaqBlog/FaqBlog";
+import Blogs from "../Pages/Blogs/Blogs";
+import Blog from "../Pages/Blogs/Blog";
+import axios from "axios";
 
 
 
@@ -60,6 +63,15 @@ import FaqBlog from "../Pages/FaqBlog/FaqBlog";
           path: 'faq',
           element: <FaqBlog></FaqBlog>
 
+        },
+        {
+          path: 'blogs',
+          element: <Blogs></Blogs>
+        },
+        {
+          path: 'blog/:id',
+          element: <Blog></Blog>,
+         
         }
 
       ]
