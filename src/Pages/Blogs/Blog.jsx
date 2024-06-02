@@ -22,9 +22,9 @@ const Blog = () => {
 
 
     return (
-        <div>
+        <div className="my-5">
             <div>
-                <div  className="card m-3 rounded-none space-y-2 bg-base-100 md:rounded-lg  h-full shadow-xl">
+                <div  className="card md:m-3 rounded-none space-y-2 bg-base-100 md:rounded-lg  h-full shadow-xl">
                     <figure><img className="w-full " src={blog?.blog_img} alt="blog Image" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Title: <span className="font-bold">{blog?.title}</span></h2>
@@ -38,9 +38,11 @@ const Blog = () => {
                         </div>
                     </div>
                 </div>
+                
 
 
             </div>
+            
 
         </div>
     );

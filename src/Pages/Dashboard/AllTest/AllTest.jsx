@@ -1,12 +1,13 @@
 import Swal from "sweetalert2";
 import Title from "../../../Components/Title/Title";
-import useTest from "../../../Hooks/useTest";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { useEffect } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -20,15 +21,22 @@ const AllTest = () => {
 
     } = useForm();
 
-    const [tests, testsLoading] = useTest();
+    const axiosSecure = useAxiosSecure();
+    const { data: tests, isPending: testsLoading, refetch } = useQuery({
+        queryKey: ['AllTests'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/allTests/admin')
+            return res.data;
+        }
+
+    })
     const [updateTest, setUpdateTest] = useState(null);
     const [selectedDate, setSelectedDate] = useState(new Date())
-    const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
     useEffect(() => {
         register('date');
         setValue('date', selectedDate);
-        setValue('name', updateTest?.name || ''); // Use updateTest if available, otherwise empty string
+        setValue('name', updateTest?.name || '');
         setValue('image', updateTest?.image || '');
         setValue('details', updateTest?.details || '');
         setValue('price', updateTest?.price || '');
@@ -50,7 +58,10 @@ const AllTest = () => {
         modal.showModal();
 
 
+
     }
+
+
     const handleDelete = test => {
         Swal.fire({
             title: "Are you sure?",
@@ -72,6 +83,7 @@ const AllTest = () => {
                                 text: `${test.name} has been deleted successfully.`,
                                 icon: "success"
                             });
+                            refetch();
 
                         }
                     })
@@ -119,6 +131,7 @@ const AllTest = () => {
                         const modal = document.getElementById("my_modal_1");
                         modal.close();
                         reset();
+                        refetch()
 
                     }
 
@@ -126,6 +139,8 @@ const AllTest = () => {
         }
 
     }
+
+
 
 
 
@@ -170,7 +185,7 @@ const AllTest = () => {
                                     </td>
                                     <td>{test.slots}</td>
                                     <td>
-                                        {/* TODO: Add reservation data for a test */}
+                                        <Link to={`/dashboard/reservations/${test?._id}`}> <button className="btn bg-blue-500 text-white">Reservations</button></Link>
                                     </td>
                                     <td>
                                         <button onClick={() => handleUpdate(test)} className="btn text-white btn-accent">Update</button>
@@ -251,8 +266,8 @@ const AllTest = () => {
                     </div>
                     <div className="modal-action">
                         <form method="dialog">
-                           
-                              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
                     </div>
                 </div>

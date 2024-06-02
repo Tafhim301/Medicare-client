@@ -5,10 +5,12 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import PromoCode from '../../Components/PromoCode/PromoCode';
 import Swal from 'sweetalert2';
+import useUser from '../../Hooks/useUser';
 
 
 
 const TestDetails = () => {
+    const [isActive,userLoading] = useUser();
     const { id } = useParams()
     const axiosSecure = useAxiosSecure();
     const { data: test, isPending: testLoading, } = useQuery({
@@ -22,7 +24,16 @@ const TestDetails = () => {
 
 
     const handleBooking = () => {
-        if(test.slots === 0 ){
+        if(!isActive){
+            return Swal.fire({
+                title: "Sorry",
+                icon:"info",
+                text:"Your activity has been blocked"
+
+            })
+        }
+
+       else if(test.slots === 0 ){
             return Swal.fire({
                 title: "Sorry",
                 icon:"info",
@@ -33,6 +44,11 @@ const TestDetails = () => {
         document.getElementById('my_modal_1').showModal()
 
 
+    }
+    if(userLoading){
+        return <div className="justify-center items-center flex mt-6 ">
+            <span className="loading-spinner loading loading-md"></span>
+        </div>
     }
     return (
         <div className="md:mx-10">
@@ -62,7 +78,7 @@ const TestDetails = () => {
                         <PromoCode test={test}></PromoCode>
                         <div className="modal-action">
                             <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
+                                
                                 <button className="btn">Close</button>
                             </form>
                         </div>

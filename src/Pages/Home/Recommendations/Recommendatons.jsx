@@ -18,7 +18,7 @@ const Recommendatons = () => {
             return res.data;
         }
     })
-    
+
     return (
         <div className="my-5 mt-2 ">
             <Title heading={"Personalized Recommendations"} subHeading={"Explore what expert says"}></Title>
@@ -48,25 +48,27 @@ const Recommendatons = () => {
                 }}
 
             >
-                {
-                    suggestions && suggestions.map(suggestion => <SwiperSlide key={suggestion?._id}>
-                        <div className="card m-3 rounded-none bg-base-100 md:rounded-lg  h-full shadow-xl">
-                            <figure><img className="w-full h-72" src={suggestion.image} alt="Test Image" /></figure>
-                            <div className="card-body">
-                                <h2 className="flex items-center gap-1">Title: <span className="font-bold card-title">{suggestion?.title}</span></h2>
+                <div className="">
+                    {
+                        suggestions && suggestions.map(suggestion => <SwiperSlide key={suggestion?._id}>
+                            <div className="card m-3  rounded-none bg-base-100 md:rounded-lg h-full  shadow-xl">
+                                <figure><img className="w-full h-72" src={suggestion.image} alt="Test Image" /></figure>
+                                <div className="card-body">
+                                    <h2 className="flex items-center gap-1">Title: <span className="font-bold card-title">{suggestion?.title}</span></h2>
 
 
-                                <p>Description: <span className="font-bold">{suggestion?.description}</span></p>
-                                <p>Posted On: <span className="font-bold">{suggestion?.date}</span></p>
-                                <p>Written By: <span className="font-bold">{suggestion?.author}</span></p>
+                                    <p>Description: <span className="font-bold">{suggestion?.description}</span></p>
+                                    <p>Posted On: <span className="font-bold">{suggestion?.date}</span></p>
+                                    <p>Written By: <span className="font-bold">{suggestion?.author}</span></p>
 
-                               
+
+                                </div>
                             </div>
-                        </div>
 
-                    </SwiperSlide>)
-                }
+                        </SwiperSlide>)
+                    }
 
+                </div>
 
 
             </Swiper>

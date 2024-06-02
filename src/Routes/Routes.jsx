@@ -18,7 +18,6 @@ import AddTest from "../Pages/Dashboard/AddTest/AddTest";
 import AllTest from "../Pages/Dashboard/AllTest/AllTest";
 import AllTests from "../Pages/AllTests/AllTests";
 import TestDetails from "../Pages/TestDetails/TestDetails";
-
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import Appointments from "../Pages/Dashboard/Appoinments/Appointments";
 import Reservations from "../Pages/Dashboard/Reservations/Reservations";
@@ -28,7 +27,7 @@ import TestResultDetails from "../Pages/Dashboard/TestResult/TestResultDetails";
 import FaqBlog from "../Pages/FaqBlog/FaqBlog";
 import Blogs from "../Pages/Blogs/Blogs";
 import Blog from "../Pages/Blogs/Blog";
-import axios from "axios";
+import ReservationTable from "../Components/ReservationTable/ReservationTable";
 
 
 
@@ -104,6 +103,11 @@ import axios from "axios";
         {
           path: 'testResult',
           element: <TestResult></TestResult>
+
+        },
+        {
+          path: 'reservations/:id',
+          element: <ReservationTable></ReservationTable>
 
         },
         // Admin Only Routes
