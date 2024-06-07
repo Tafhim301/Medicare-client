@@ -28,6 +28,7 @@ import FaqBlog from "../Pages/FaqBlog/FaqBlog";
 import Blogs from "../Pages/Blogs/Blogs";
 import Blog from "../Pages/Blogs/Blog";
 import ReservationTable from "../Components/ReservationTable/ReservationTable";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 
@@ -35,6 +36,7 @@ import ReservationTable from "../Components/ReservationTable/ReservationTable";
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: 
       [
         {
@@ -78,6 +80,7 @@ import ReservationTable from "../Components/ReservationTable/ReservationTable";
     {
       path: 'dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      errorElement: <ErrorPage></ErrorPage>,
       children:
        [
         {
