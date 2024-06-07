@@ -6,7 +6,7 @@ const useUpazilla = () => {
     const {data: upazillas = []} = useQuery({
         queryKey: ['upazillas'],
         queryFn:async() =>{
-           const res = await axios.get('/public/upazila.json')
+           const res = await axios.get('/upazila.json')
            return res.data;
         } 
             

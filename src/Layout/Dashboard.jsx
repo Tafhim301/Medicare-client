@@ -1,6 +1,6 @@
 import { FaAd, FaBookMedical, FaClipboardList, FaHome, FaSearch, FaUsers, } from "react-icons/fa";
 import { FaCalendar, FaList, } from "react-icons/fa6";
-import { NavLink, Navigate, Outlet,  } from "react-router-dom";
+import { NavLink,  Outlet,  } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import { BsCardImage } from "react-icons/bs";
 import { IoIosImages } from "react-icons/io";
@@ -13,6 +13,7 @@ const Dashboard = () => {
     const [isAdmin, adminLoading] = useAdmin();
     const [isActive, userLoading] = useUser();
    
+   
 
 
     if (adminLoading || userLoading) {
@@ -21,14 +22,15 @@ const Dashboard = () => {
         </div>
     }
     if (!isActive) {
-        Swal.fire({
+       return Swal.fire({
             title: 'Sorry',
             text: "Your activity has been blocked",
             icon: 'warning',
+            
 
         })
 
-         return <Navigate state={{ from: location }} to={'/'}></Navigate>
+       
        
         
     }
@@ -42,6 +44,9 @@ const Dashboard = () => {
                             <>
 
                                 <li>
+                                    <NavLink to={'/dashboard/users'}><FaUsers />All Users</NavLink>
+                                </li>
+                                <li>
                                     <NavLink to={'/dashboard/addTest'}><FaBookMedical />Add A Test</NavLink>
                                 </li>
                                 <li>
@@ -49,9 +54,6 @@ const Dashboard = () => {
                                 </li>
                                 <li>
                                     <NavLink to={'/dashboard/reservations'}><FaClipboardList />Reservations</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to={'/dashboard/users'}><FaUsers />All Users</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/dashboard/addBanner'}><BsCardImage />Add Banner</NavLink>

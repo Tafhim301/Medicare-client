@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Title from '../Title/Title';
 
@@ -18,6 +18,7 @@ const TestResultsForm = () => {
             return res.data;
         }
     });
+    const navigate = useNavigate();
 
     const [resultData, setResultData] = useState({
         WBC: '',
@@ -40,6 +41,7 @@ const TestResultsForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
 
        
 
@@ -62,9 +64,11 @@ const TestResultsForm = () => {
                     text: "Report has been delivered successfully",
                     icon: "success"
                 });
+                navigate('/dashboard/reservations')
+
             }
         } catch (error) {
-            console.error('Error saving PDF to the database:', error);
+         
             Swal.fire({
                 title: "Error!",
                 text: "Failed to deliver report. Please try again later.",
@@ -72,7 +76,7 @@ const TestResultsForm = () => {
             });
         }
     };
-
+    
 
    
    

@@ -27,7 +27,7 @@ const TestDetails = () => {
         if(!isActive){
             return Swal.fire({
                 title: "Sorry",
-                icon:"info",
+                icon:"warning",
                 text:"Your activity has been blocked"
 
             })

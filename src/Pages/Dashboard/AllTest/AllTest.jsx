@@ -153,6 +153,7 @@ const AllTest = () => {
                     <thead>
                         <tr>
 
+                            <th>#</th>
                             <th>Image</th>
                             <th>Test Details</th>
                             <th>Slots</th>
@@ -166,6 +167,7 @@ const AllTest = () => {
                         {
                             tests.map((test, idx) =>
                                 <tr key={idx}>
+                                    <td>{idx + 1}</td>
 
                                     <td >
                                         <div className="flex items-center gap-3">
