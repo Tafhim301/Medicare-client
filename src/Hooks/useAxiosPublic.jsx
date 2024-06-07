@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://medicare-server-sepia.vercel.app'
 })
 
 const useAxiosPublic = () => {

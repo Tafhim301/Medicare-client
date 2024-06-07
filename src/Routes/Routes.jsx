@@ -9,7 +9,6 @@ import Login from "../Pages/Login/Login";
 import Dashboard from "../Layout/Dashboard";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import Users from "../Pages/Dashboard/Users/Users";
-import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
 import AllBanners from "../Pages/Dashboard/AllBanners/AllBanners";
 import PrivateRoute from "./PrivateRoute";
@@ -124,10 +123,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
           element: <AdminRoute><TestResultsForm></TestResultsForm></AdminRoute>,
           
         },
-        {
-          path: 'adminHome',
-          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
-        },
+        
         {
           path: 'addBanner',
           element: <AdminRoute><AddBanner></AddBanner></AdminRoute>
